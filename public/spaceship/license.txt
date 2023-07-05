@@ -1,0 +1,11 @@
+Model Information:
+* title:	The Moon Landing V.2
+* source:	https://sketchfab.com/3d-models/the-moon-landing-v2-7e310f6267e54c9da7a19b88d0b68fb1
+* author:	MisterH (https://sketchfab.com/TGVMisterH)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "The Moon Landing V.2" (https://sketchfab.com/3d-models/the-moon-landing-v2-7e310f6267e54c9da7a19b88d0b68fb1) by MisterH (https://sketchfab.com/TGVMisterH) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
