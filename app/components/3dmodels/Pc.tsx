@@ -11,6 +11,7 @@ import * as THREE from "three";
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
+import { useState, useEffect } from "react";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -25,22 +26,121 @@ type GLTFResult = GLTF & {
 
 export default function Pc(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF("/pc/pc.gltf") as GLTFResult;
+
+  const [isXs, setIsXs] = useState(false);
+  const [isMd, setIsMd] = useState(false);
+  const [isLg, setIsLg] = useState(false);
+  const [isXl, setIsXl] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 575px)");
+    media.addEventListener("change", () => {
+      setIsXs(media.matches);
+    });
+
+    const media1 = window.matchMedia(
+      "(min-width: 576px) and (max-width:: 767px)"
+    );
+    media1.addEventListener("change", () => {
+      setIsMd(media1.matches);
+    });
+
+    const media2 = window.matchMedia(
+      "(min-width: 768px) and (max-width: 1031px)"
+    );
+    media2.addEventListener("change", () => {
+      setIsLg(media2.matches);
+    });
+
+    const media3 = window.matchMedia("(min-width: 1032px)");
+    media3.addEventListener("change", () => {
+      setIsXl(media3.matches);
+    });
+
+    setIsXs(media.matches);
+    setIsMd(media1.matches);
+    setIsLg(media2.matches);
+    setIsXl(media3.matches);
+  }, []);
+
   return (
-    <group {...props} dispose={null} scale={2.5}>
-      <group rotation={[-Math.PI / 2, 0, 0]} scale={0.733}>
-        <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
-          <mesh
-            geometry={nodes["et_09_-_Default_0"].geometry}
-            material={materials["09_-_Default"]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
-          <mesh
-            geometry={nodes["Object_08_-_Default_0"].geometry}
-            material={materials["08_-_Default"]}
-            rotation={[-Math.PI / 2, 0, 0]}
-          />
+    <group {...props} dispose={null} scale={3}>
+      {isXl ? (
+        <group rotation={[-Math.PI / 2, 0, 0]} scale={0.733}>
+          <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+            <mesh
+              geometry={nodes["et_09_-_Default_0"].geometry}
+              material={materials["09_-_Default"]}
+              rotation={[-Math.PI / 2, 0, 0]}
+            />
+            <mesh
+              geometry={nodes["Object_08_-_Default_0"].geometry}
+              material={materials["08_-_Default"]}
+              rotation={[-Math.PI / 2, 0, 0]}
+            />
+          </group>
         </group>
-      </group>
+      ) : isLg ? (
+        <group rotation={[-Math.PI / 2, 0, 0]} scale={0.5}>
+          <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+            <mesh
+              geometry={nodes["et_09_-_Default_0"].geometry}
+              material={materials["09_-_Default"]}
+              rotation={[-Math.PI / 2, 0, 0]}
+            />
+            <mesh
+              geometry={nodes["Object_08_-_Default_0"].geometry}
+              material={materials["08_-_Default"]}
+              rotation={[-Math.PI / 2, 0, 0]}
+            />
+          </group>
+        </group>
+      ) : isMd ? (
+        <group rotation={[-Math.PI / 2, 0, 0]} scale={0.3}>
+          <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+            <mesh
+              geometry={nodes["et_09_-_Default_0"].geometry}
+              material={materials["09_-_Default"]}
+              rotation={[-Math.PI / 2, 0, 0]}
+            />
+            <mesh
+              geometry={nodes["Object_08_-_Default_0"].geometry}
+              material={materials["08_-_Default"]}
+              rotation={[-Math.PI / 2, 0, 0]}
+            />
+          </group>
+        </group>
+      ) : isXs ? (
+        <group rotation={[-Math.PI / 2, 0, 0]} scale={0.45}>
+          <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+            <mesh
+              geometry={nodes["et_09_-_Default_0"].geometry}
+              material={materials["09_-_Default"]}
+              rotation={[-Math.PI / 2, 0, 0]}
+            />
+            <mesh
+              geometry={nodes["Object_08_-_Default_0"].geometry}
+              material={materials["08_-_Default"]}
+              rotation={[-Math.PI / 2, 0, 0]}
+            />
+          </group>
+        </group>
+      ) : (
+        <group rotation={[-Math.PI / 2, 0, 0]} scale={0.45}>
+          <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+            <mesh
+              geometry={nodes["et_09_-_Default_0"].geometry}
+              material={materials["09_-_Default"]}
+              rotation={[-Math.PI / 2, 0, 0]}
+            />
+            <mesh
+              geometry={nodes["Object_08_-_Default_0"].geometry}
+              material={materials["08_-_Default"]}
+              rotation={[-Math.PI / 2, 0, 0]}
+            />
+          </group>
+        </group>
+      )}
     </group>
   );
 }

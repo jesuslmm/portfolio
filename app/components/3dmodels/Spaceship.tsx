@@ -11,6 +11,7 @@ import * as THREE from "three";
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
+import { useState, useEffect } from "react";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -46,70 +47,382 @@ export default function Spaceship(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF(
     "/spaceship/spaceship.gltf"
   ) as GLTFResult;
+
+  const [isXs, setIsXs] = useState(false);
+  const [isMd, setIsMd] = useState(false);
+  const [isLg, setIsLg] = useState(false);
+  const [isXl, setIsXl] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 575px)");
+    media.addEventListener("change", () => {
+      setIsXs(media.matches);
+    });
+
+    const media1 = window.matchMedia(
+      "(min-width: 576px) and (max-width:: 767px)"
+    );
+    media1.addEventListener("change", () => {
+      setIsMd(media1.matches);
+    });
+
+    const media2 = window.matchMedia(
+      "(min-width: 768px) and (max-width: 1031px)"
+    );
+    media2.addEventListener("change", () => {
+      setIsLg(media2.matches);
+    });
+
+    const media3 = window.matchMedia("(min-width: 1032px)");
+    media3.addEventListener("change", () => {
+      setIsXl(media3.matches);
+    });
+
+    setIsXs(media.matches);
+    setIsMd(media1.matches);
+    setIsLg(media2.matches);
+    setIsXl(media3.matches);
+  }, []);
+
   return (
-    <group {...props} dispose={null} scale={2.5}>
-      <group
-        position={[1.37, -1.37, -0.021]}
-        rotation={[-1.48, 0.078, -2.431]}
-        scale={0.103}
-      >
-        <mesh
-          geometry={nodes.Object_4.geometry}
-          material={materials.Rover_Mat}
-        />
-        <mesh
-          geometry={nodes.Object_5.geometry}
-          material={materials.Asteroid_Mat}
-        />
-        <mesh
-          geometry={nodes.Object_6.geometry}
-          material={materials.Base_Palette_Metallic}
-        />
-        <mesh
-          geometry={nodes.Object_7.geometry}
-          material={materials.Base_Palette_Emissive}
-        />
-        <mesh
-          geometry={nodes.Object_8.geometry}
-          material={materials.Base_Palette_NonMetal}
-        />
-        <mesh geometry={nodes.Object_9.geometry} material={materials.USFlag} />
-        <mesh
-          geometry={nodes.Object_10.geometry}
-          material={materials.Astronaut_Suit}
-        />
-        <mesh
-          geometry={nodes.Object_11.geometry}
-          material={materials.Astronaut_Suit}
-        />
-        <mesh
-          geometry={nodes.Object_12.geometry}
-          material={materials.Astronaut__face}
-        />
-        <mesh
-          geometry={nodes.Object_13.geometry}
-          material={materials.Astronaut_Visor}
-        />
-      </group>
-      <group
-        position={[1.37, -1.37, -0.021]}
-        rotation={[-1.48, 0.078, -2.431]}
-        scale={0.103}
-      >
-        <mesh
-          geometry={nodes.Object_15.geometry}
-          material={materials.Material}
-        />
-        <mesh
-          geometry={nodes.Object_16.geometry}
-          material={materials.Material}
-        />
-        <mesh
-          geometry={nodes.Object_17.geometry}
-          material={materials.Material}
-        />
-      </group>
-    </group>
+    <>
+      {isXs ? (
+        <group {...props} dispose={null} scale={0.2}>
+          <group
+            position={[1.37, -1.37, -0.021]}
+            rotation={[-1.48, 0.078, -2.431]}
+            scale={0.103}
+          >
+            <mesh
+              geometry={nodes.Object_4.geometry}
+              material={materials.Rover_Mat}
+            />
+            <mesh
+              geometry={nodes.Object_5.geometry}
+              material={materials.Asteroid_Mat}
+            />
+            <mesh
+              geometry={nodes.Object_6.geometry}
+              material={materials.Base_Palette_Metallic}
+            />
+            <mesh
+              geometry={nodes.Object_7.geometry}
+              material={materials.Base_Palette_Emissive}
+            />
+            <mesh
+              geometry={nodes.Object_8.geometry}
+              material={materials.Base_Palette_NonMetal}
+            />
+            <mesh
+              geometry={nodes.Object_9.geometry}
+              material={materials.USFlag}
+            />
+            <mesh
+              geometry={nodes.Object_10.geometry}
+              material={materials.Astronaut_Suit}
+            />
+            <mesh
+              geometry={nodes.Object_11.geometry}
+              material={materials.Astronaut_Suit}
+            />
+            <mesh
+              geometry={nodes.Object_12.geometry}
+              material={materials.Astronaut__face}
+            />
+            <mesh
+              geometry={nodes.Object_13.geometry}
+              material={materials.Astronaut_Visor}
+            />
+          </group>
+          <group
+            position={[1.37, -1.37, -0.021]}
+            rotation={[-1.48, 0.078, -2.431]}
+            scale={0.103}
+          >
+            <mesh
+              geometry={nodes.Object_15.geometry}
+              material={materials.Material}
+            />
+            <mesh
+              geometry={nodes.Object_16.geometry}
+              material={materials.Material}
+            />
+            <mesh
+              geometry={nodes.Object_17.geometry}
+              material={materials.Material}
+            />
+          </group>
+        </group>
+      ) : isMd ? (
+        <group {...props} dispose={null} scale={0.28}>
+          <group
+            position={[1.37, -1.37, -0.021]}
+            rotation={[-1.48, 0.078, -2.431]}
+            scale={0.103}
+          >
+            <mesh
+              geometry={nodes.Object_4.geometry}
+              material={materials.Rover_Mat}
+            />
+            <mesh
+              geometry={nodes.Object_5.geometry}
+              material={materials.Asteroid_Mat}
+            />
+            <mesh
+              geometry={nodes.Object_6.geometry}
+              material={materials.Base_Palette_Metallic}
+            />
+            <mesh
+              geometry={nodes.Object_7.geometry}
+              material={materials.Base_Palette_Emissive}
+            />
+            <mesh
+              geometry={nodes.Object_8.geometry}
+              material={materials.Base_Palette_NonMetal}
+            />
+            <mesh
+              geometry={nodes.Object_9.geometry}
+              material={materials.USFlag}
+            />
+            <mesh
+              geometry={nodes.Object_10.geometry}
+              material={materials.Astronaut_Suit}
+            />
+            <mesh
+              geometry={nodes.Object_11.geometry}
+              material={materials.Astronaut_Suit}
+            />
+            <mesh
+              geometry={nodes.Object_12.geometry}
+              material={materials.Astronaut__face}
+            />
+            <mesh
+              geometry={nodes.Object_13.geometry}
+              material={materials.Astronaut_Visor}
+            />
+          </group>
+          <group
+            position={[1.37, -1.37, -0.021]}
+            rotation={[-1.48, 0.078, -2.431]}
+            scale={0.103}
+          >
+            <mesh
+              geometry={nodes.Object_15.geometry}
+              material={materials.Material}
+            />
+            <mesh
+              geometry={nodes.Object_16.geometry}
+              material={materials.Material}
+            />
+            <mesh
+              geometry={nodes.Object_17.geometry}
+              material={materials.Material}
+            />
+          </group>
+        </group>
+      ) : isLg ? (
+        <group {...props} dispose={null} scale={0.3}>
+          <group
+            position={[1.37, -1.37, -0.021]}
+            rotation={[-1.48, 0.078, -2.431]}
+            scale={0.103}
+          >
+            <mesh
+              geometry={nodes.Object_4.geometry}
+              material={materials.Rover_Mat}
+            />
+            <mesh
+              geometry={nodes.Object_5.geometry}
+              material={materials.Asteroid_Mat}
+            />
+            <mesh
+              geometry={nodes.Object_6.geometry}
+              material={materials.Base_Palette_Metallic}
+            />
+            <mesh
+              geometry={nodes.Object_7.geometry}
+              material={materials.Base_Palette_Emissive}
+            />
+            <mesh
+              geometry={nodes.Object_8.geometry}
+              material={materials.Base_Palette_NonMetal}
+            />
+            <mesh
+              geometry={nodes.Object_9.geometry}
+              material={materials.USFlag}
+            />
+            <mesh
+              geometry={nodes.Object_10.geometry}
+              material={materials.Astronaut_Suit}
+            />
+            <mesh
+              geometry={nodes.Object_11.geometry}
+              material={materials.Astronaut_Suit}
+            />
+            <mesh
+              geometry={nodes.Object_12.geometry}
+              material={materials.Astronaut__face}
+            />
+            <mesh
+              geometry={nodes.Object_13.geometry}
+              material={materials.Astronaut_Visor}
+            />
+          </group>
+          <group
+            position={[1.37, -1.37, -0.021]}
+            rotation={[-1.48, 0.078, -2.431]}
+            scale={0.103}
+          >
+            <mesh
+              geometry={nodes.Object_15.geometry}
+              material={materials.Material}
+            />
+            <mesh
+              geometry={nodes.Object_16.geometry}
+              material={materials.Material}
+            />
+            <mesh
+              geometry={nodes.Object_17.geometry}
+              material={materials.Material}
+            />
+          </group>
+        </group>
+      ) : isXl ? (
+        <group {...props} dispose={null} scale={0.8}>
+          <group
+            position={[1.37, -1.37, -0.021]}
+            rotation={[-1.48, 0.078, -2.431]}
+            scale={0.103}
+          >
+            <mesh
+              geometry={nodes.Object_4.geometry}
+              material={materials.Rover_Mat}
+            />
+            <mesh
+              geometry={nodes.Object_5.geometry}
+              material={materials.Asteroid_Mat}
+            />
+            <mesh
+              geometry={nodes.Object_6.geometry}
+              material={materials.Base_Palette_Metallic}
+            />
+            <mesh
+              geometry={nodes.Object_7.geometry}
+              material={materials.Base_Palette_Emissive}
+            />
+            <mesh
+              geometry={nodes.Object_8.geometry}
+              material={materials.Base_Palette_NonMetal}
+            />
+            <mesh
+              geometry={nodes.Object_9.geometry}
+              material={materials.USFlag}
+            />
+            <mesh
+              geometry={nodes.Object_10.geometry}
+              material={materials.Astronaut_Suit}
+            />
+            <mesh
+              geometry={nodes.Object_11.geometry}
+              material={materials.Astronaut_Suit}
+            />
+            <mesh
+              geometry={nodes.Object_12.geometry}
+              material={materials.Astronaut__face}
+            />
+            <mesh
+              geometry={nodes.Object_13.geometry}
+              material={materials.Astronaut_Visor}
+            />
+          </group>
+          <group
+            position={[1.37, -1.37, -0.021]}
+            rotation={[-1.48, 0.078, -2.431]}
+            scale={0.103}
+          >
+            <mesh
+              geometry={nodes.Object_15.geometry}
+              material={materials.Material}
+            />
+            <mesh
+              geometry={nodes.Object_16.geometry}
+              material={materials.Material}
+            />
+            <mesh
+              geometry={nodes.Object_17.geometry}
+              material={materials.Material}
+            />
+          </group>
+        </group>
+      ) : (
+        <group {...props} dispose={null} scale={0.3}>
+          <group
+            position={[1.37, -1.37, -0.021]}
+            rotation={[-1.48, 0.078, -2.431]}
+            scale={0.103}
+          >
+            <mesh
+              geometry={nodes.Object_4.geometry}
+              material={materials.Rover_Mat}
+            />
+            <mesh
+              geometry={nodes.Object_5.geometry}
+              material={materials.Asteroid_Mat}
+            />
+            <mesh
+              geometry={nodes.Object_6.geometry}
+              material={materials.Base_Palette_Metallic}
+            />
+            <mesh
+              geometry={nodes.Object_7.geometry}
+              material={materials.Base_Palette_Emissive}
+            />
+            <mesh
+              geometry={nodes.Object_8.geometry}
+              material={materials.Base_Palette_NonMetal}
+            />
+            <mesh
+              geometry={nodes.Object_9.geometry}
+              material={materials.USFlag}
+            />
+            <mesh
+              geometry={nodes.Object_10.geometry}
+              material={materials.Astronaut_Suit}
+            />
+            <mesh
+              geometry={nodes.Object_11.geometry}
+              material={materials.Astronaut_Suit}
+            />
+            <mesh
+              geometry={nodes.Object_12.geometry}
+              material={materials.Astronaut__face}
+            />
+            <mesh
+              geometry={nodes.Object_13.geometry}
+              material={materials.Astronaut_Visor}
+            />
+          </group>
+          <group
+            position={[1.37, -1.37, -0.021]}
+            rotation={[-1.48, 0.078, -2.431]}
+            scale={0.103}
+          >
+            <mesh
+              geometry={nodes.Object_15.geometry}
+              material={materials.Material}
+            />
+            <mesh
+              geometry={nodes.Object_16.geometry}
+              material={materials.Material}
+            />
+            <mesh
+              geometry={nodes.Object_17.geometry}
+              material={materials.Material}
+            />
+          </group>
+        </group>
+      )}
+    </>
   );
 }
 

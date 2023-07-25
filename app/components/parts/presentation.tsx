@@ -1,77 +1,90 @@
 import Image from "next/image";
 import Pc from "../3dmodels/Pc";
 import {
-  useGLTF,
   OrbitControls,
   PerspectiveCamera,
   Environment,
 } from "@react-three/drei";
 import { MeshReflectorMaterial } from "@react-three/drei";
-import { Canvas, useThree } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
+import { Pc2 } from "../3dmodels/Pc2";
+import { Pc1 } from "../3dmodels/Pc1";
 
 export default function Presentation() {
   return (
-    <>
+    <div id="main">
       <div className="h-screen flex">
-        <div className="w-3/5 bg-gray-600">
-          <div className="flex flex-col p-44 pb-12 text-6xl font-extrabold text-slate-800">
-            <span className="mb-2">Fullstack</span>
-            <span>Developer</span>
-            <p className="text-xl mt-8 text-white font-normal">
+        <div className="lg:w-3/5 h-screen w-full bg-gray-600 ">
+          <div className="py-36 text-6xl font-extrabold text-slate-800 text-center">
+            <h1>
+              Fullstack <br />
+              Developer{" "}
+            </h1>
+            <p className="text-2xl text-white font-normal hidden md:block relative top-24">
               Im a crafter of{" "}
               <span className="font-extrabold text-white">GOOD </span>
               and
               <span className="font-extrabold text-white"> SOLID </span>
               fullstack products
             </p>
-          </div>
-          <div className="flex p-36">
-            <p className="absolute -mt-14 font-bold text-2xl ml-2">
-              Main stack:
+            <p className="text-xl hidden lg:block relative top-32 mx-32 text-white font-normal">
+              I am a creative and resourceful programmer with a strong
+              understanding of software development principles. I am passionate
+              about solving problems and creating innovative solutions.
             </p>
+
+            <p className="text-lg md:hidden text-white relative top-10">
+              Im a crafter of GOOD and SOLID fullstack products
+            </p>
+          </div>
+          <div className="flex lg:p-36 py-44 mt-28 md:mt-0">
+            <p className="font-bold text-2xl">Main stack:</p>
             <div className="px-3 animate-trans-top-1">
               <Image
                 alt="Next.js Logo"
                 src="/images/nextLogo.png"
-                width={100}
-                height={100}
+                width={130}
+                height={130}
               />
             </div>
             <div className="px-3 animate-trans-top-1">
               <Image
                 alt="Typescript Logo"
                 src="/images/tsLogo.png"
-                width={130}
-                height={130}
+                width={150}
+                height={150}
               />
             </div>
             <div className="px-3 mt-4 animate-trans-top-1">
               <Image
                 alt="TailwindCSS Logo"
                 src="/images/tailwindLogo.png"
-                width={100}
-                height={100}
+                width={150}
+                height={150}
               />
             </div>
             <div className="px-3 animate-trans-top-1">
               <Image
                 alt="PostgreSQL Logo"
                 src="/images/postgreSQL.png"
-                width={100}
-                height={100}
+                width={150}
+                height={150}
               />
             </div>
           </div>
         </div>
-        <div className="absolute right-96 mt-28">
+        <div className="absolute lg:right-96 lg:mt-28 md:right-40 md:mt-72 md:top-9 right-3 top-96">
           <p className="rotate-6 font-bold text-white text-right py-6 text-2xl">
             <span className="hover:animate-bounce">👋</span>
             Hi! Im Jesús
           </p>
         </div>
-        <div className="w-2/5 h-full bg-slate-800"></div>
+        <div className=" w-2/5 h-full bg-slate-800"></div>
       </div>
-      <div className="h-screen absolute top-0 right-96">
+      <div
+        className="h-screen absolute xl:top-16 xl:left-auto md:w-[680px] w-[400px] lg:top-28 lg:right-0 md:mt-0
+      md:top-12 md:-ml-12 top-36"
+      >
         <Canvas dpr={[1, 2]} shadows>
           <fog attach="fog" args={["#101010", 0, 10]} />
           <Environment preset="city" />
@@ -120,6 +133,6 @@ export default function Presentation() {
           </PerspectiveCamera>
         </Canvas>
       </div>
-    </>
+    </div>
   );
 }
