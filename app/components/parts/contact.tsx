@@ -2,6 +2,14 @@ import { EnvelopeIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Pc from "../3dmodels/Pc";
+import {
+  OrbitControls,
+  PerspectiveCamera,
+  Environment,
+} from "@react-three/drei";
+import { MeshReflectorMaterial } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 
 export default function Contact() {
   const handleSendMail = () => {
@@ -50,9 +58,11 @@ export default function Contact() {
       id="contact"
       className="flex justify-center items-center h-screen bg-gradient-to-b from-gray-900 to-gray-600"
     >
-      <div className="absolute lg:px-96 lg:py-72 md:px-72 md:py-56 px-48 py-72 -mt-36 bg-gray-700 rounded-xl text-white">
-        <div className="absolute top-0 left-0">
-          <h3 className="lg:text-5xl text-3xl  font-extrabold p-12">Contact</h3>
+      <div className="md:absolute lg:px-96 lg:py-72 md:px-72 md:py-56 md:bg-gray-700 md:rounded-xl text-white">
+        <div className="md:absolute md:top-0 md:left-0">
+          <h3 className="lg:text-5xl text-3xl font-extrabold p-12 -mt-56 md:-mt-0">
+            Contact
+          </h3>
           <p className="ml-12 -mt-4 lg:mr-52 md:mr-32 text-lg mr-24 ">
             Thank you for visiting! For any questions or inquiries, please feel
             free to send me a message in any social media. I will get back to
@@ -100,37 +110,57 @@ export default function Contact() {
                 </Link>
               </div>
             </div>
-            <div className="ml-8">
-              {isXl ? (
-                <Image
-                  src="/images/trying.png"
-                  alt="trying"
-                  height={200}
-                  width={200}
+            <div
+              className="absolute xl:left-auto md:w-[350px] md:h-[300px] lg:top-64 md:right-0 md:top-20 md:ml-0 md:mt-0
+             w-[230px] h-[200px] justify-center mt-16"
+            >
+              <Canvas dpr={[1, 2]} shadows>
+                <fog attach="fog" args={["#101010", 0, 10]} />
+                <Environment preset="city" />
+                <group position={[0, -0.5, 0]}>
+                  <Pc />
+                  <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
+                    <MeshReflectorMaterial
+                      blur={[400, 100]}
+                      resolution={1024}
+                      mixBlur={1}
+                      opacity={2}
+                      depthScale={1.1}
+                      minDepthThreshold={0.4}
+                      maxDepthThreshold={1.25}
+                      roughness={3}
+                      mirror={1}
+                    />
+                  </mesh>
+                  <mesh
+                    receiveShadow
+                    rotation-x={-Math.PI / 2}
+                    position={[0, 0.001, 0]}
+                  >
+                    <planeGeometry args={[10, 10]} />
+                    <shadowMaterial transparent color="black" opacity={0.4} />
+                  </mesh>
+                </group>
+                <OrbitControls
+                  makeDefault
+                  autoRotate
+                  autoRotateSpeed={0.3}
+                  maxPolarAngle={Math.PI / 2.3}
+                  minPolarAngle={Math.PI / 2.3}
+                  enableZoom={false}
+                  enablePan={false}
                 />
-              ) : isLg ? (
-                <Image
-                  src="/images/trying.png"
-                  alt="trying"
-                  height={120}
-                  width={120}
-                />
-              ) : isMd ? (
-                <Image
-                  src="/images/trying.png"
-                  alt="trying"
-                  height={150}
-                  width={150}
-                />
-              ) : (
-                <Image
-                  className="ml-40 -mt-20"
-                  src="/images/trying.png"
-                  alt="trying"
-                  height={80}
-                  width={80}
-                />
-              )}
+                <PerspectiveCamera makeDefault fov={65} position={[0, 0, 4]}>
+                  <spotLight
+                    position={[10, 10, 5]}
+                    angle={0.15}
+                    penumbra={1}
+                    intensity={10}
+                    castShadow
+                    shadow-mapSize={[2048, 2048]}
+                  />
+                </PerspectiveCamera>
+              </Canvas>
             </div>
           </div>
         </div>

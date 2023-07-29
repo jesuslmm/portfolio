@@ -39,7 +39,7 @@ const projectData = [
   },
 ];
 
-export default function FindProjectData({ name }: { name: string }) {
+export default function FindProjectData(name: string) {
   const projectInfo = projectData.find((project) => project.name == name);
   return projectInfo as project;
 }

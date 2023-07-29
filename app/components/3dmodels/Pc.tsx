@@ -66,7 +66,7 @@ export default function Pc(props: JSX.IntrinsicElements["group"]) {
   return (
     <group {...props} dispose={null} scale={3}>
       {isXl ? (
-        <group rotation={[-Math.PI / 2, 0, 0]} scale={0.733}>
+        <group rotation={[-Math.PI / 2, 0, 0]} scale={0.8}>
           <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
             <mesh
               geometry={nodes["et_09_-_Default_0"].geometry}
@@ -81,7 +81,7 @@ export default function Pc(props: JSX.IntrinsicElements["group"]) {
           </group>
         </group>
       ) : isLg ? (
-        <group rotation={[-Math.PI / 2, 0, 0]} scale={0.5}>
+        <group rotation={[-Math.PI / 2, 0, 0]} scale={0.65}>
           <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
             <mesh
               geometry={nodes["et_09_-_Default_0"].geometry}
@@ -96,7 +96,7 @@ export default function Pc(props: JSX.IntrinsicElements["group"]) {
           </group>
         </group>
       ) : isMd ? (
-        <group rotation={[-Math.PI / 2, 0, 0]} scale={0.3}>
+        <group rotation={[-Math.PI / 2, 0, 0]} scale={0.6}>
           <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
             <mesh
               geometry={nodes["et_09_-_Default_0"].geometry}
@@ -111,7 +111,7 @@ export default function Pc(props: JSX.IntrinsicElements["group"]) {
           </group>
         </group>
       ) : isXs ? (
-        <group rotation={[-Math.PI / 2, 0, 0]} scale={0.45}>
+        <group rotation={[-Math.PI / 2, 0, 0]} scale={0.95}>
           <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
             <mesh
               geometry={nodes["et_09_-_Default_0"].geometry}
@@ -126,7 +126,7 @@ export default function Pc(props: JSX.IntrinsicElements["group"]) {
           </group>
         </group>
       ) : (
-        <group rotation={[-Math.PI / 2, 0, 0]} scale={0.45}>
+        <group rotation={[-Math.PI / 2, 0, 0]} scale={0.9}>
           <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
             <mesh
               geometry={nodes["et_09_-_Default_0"].geometry}

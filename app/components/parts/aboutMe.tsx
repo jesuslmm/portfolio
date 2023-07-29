@@ -52,7 +52,7 @@ export default function AboutMe() {
           latest technologies. I have a strong understanding of HTML, CSS, and
           JavaScript, and Im proficient in React, TailwindCSS, Prisma, but my
           favorite being Next.js. I have experience with a databases like
-          PostgreSQ.Im confident that I can create websites that meet your
+          PostgreSQL. Im confident that I can create websites that meet your
           needs. Im a hard worker and Im always willing to learn new things. Im
           also a great communicator and Im able to work well with others. If you
           are interested in working with me, please feel free to contact me. I

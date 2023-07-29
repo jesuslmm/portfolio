@@ -1,19 +1,46 @@
 import Image from "next/image";
-import Pc from "../3dmodels/Pc";
-import {
-  OrbitControls,
-  PerspectiveCamera,
-  Environment,
-} from "@react-three/drei";
-import { MeshReflectorMaterial } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
-import { Pc2 } from "../3dmodels/Pc2";
-import { Pc1 } from "../3dmodels/Pc1";
+import { useState, useEffect } from "react";
 
 export default function Presentation() {
+  const [isXs, setIsXs] = useState(false);
+  const [isMd, setIsMd] = useState(false);
+  const [isLg, setIsLg] = useState(false);
+  const [isXl, setIsXl] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 575px)");
+    media.addEventListener("change", () => {
+      setIsXs(media.matches);
+    });
+
+    const media1 = window.matchMedia(
+      "(min-width: 576px) and (max-width:: 767px)"
+    );
+    media1.addEventListener("change", () => {
+      setIsMd(media1.matches);
+    });
+
+    const media2 = window.matchMedia(
+      "(min-width: 768px) and (max-width: 1031px)"
+    );
+    media2.addEventListener("change", () => {
+      setIsLg(media2.matches);
+    });
+
+    const media3 = window.matchMedia("(min-width: 1032px)");
+    media3.addEventListener("change", () => {
+      setIsXl(media3.matches);
+    });
+
+    setIsXs(media.matches);
+    setIsMd(media1.matches);
+    setIsLg(media2.matches);
+    setIsXl(media3.matches);
+  }, []);
+
   return (
     <div id="main">
-      <div className="h-screen flex">
+      <div className="relative h-screen flex">
         <div className="lg:w-3/5 h-screen w-full bg-gray-600 ">
           <div className="py-36 text-6xl font-extrabold text-slate-800 text-center">
             <h1>
@@ -27,7 +54,7 @@ export default function Presentation() {
               <span className="font-extrabold text-white"> SOLID </span>
               fullstack products
             </p>
-            <p className="text-xl hidden lg:block relative top-32 mx-32 text-white font-normal">
+            <p className="text-xl hidden lg:block relative top-32 lg:mx-8 mx-32 text-white font-normal">
               I am a creative and resourceful programmer with a strong
               understanding of software development principles. I am passionate
               about solving problems and creating innovative solutions.
@@ -37,7 +64,7 @@ export default function Presentation() {
               Im a crafter of GOOD and SOLID fullstack products
             </p>
           </div>
-          <div className="flex lg:p-36 py-44 mt-28 md:mt-0">
+          <div className="grid grid-cols-5 xl:p-24 lg:p-28 py-52 md:p-20 md:mt-0">
             <p className="font-bold text-2xl">Main stack:</p>
             <div className="px-3 animate-trans-top-1">
               <Image
@@ -73,65 +100,68 @@ export default function Presentation() {
             </div>
           </div>
         </div>
-        <div className="absolute lg:right-96 lg:mt-28 md:right-40 md:mt-72 md:top-9 right-3 top-96">
+        <div
+          className="absolute lg:right-96 lg:top-36
+        md:right-40 md:top-56
+        right-3 top-96"
+        >
           <p className="rotate-6 font-bold text-white text-right py-6 text-2xl">
             <span className="hover:animate-bounce">👋</span>
             Hi! Im Jesús
           </p>
         </div>
-        <div className=" w-2/5 h-full bg-slate-800"></div>
-      </div>
-      <div
-        className="h-screen absolute xl:top-16 xl:left-auto md:w-[680px] w-[400px] lg:top-28 lg:right-0 md:mt-0
-      md:top-12 md:-ml-12 top-36"
-      >
-        <Canvas dpr={[1, 2]} shadows>
-          <fog attach="fog" args={["#101010", 0, 10]} />
-          <Environment preset="city" />
-          <group position={[0, -0.5, 0]}>
-            <Pc />
-            <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
-              <MeshReflectorMaterial
-                blur={[400, 100]}
-                resolution={1024}
-                mixBlur={1}
-                opacity={2}
-                depthScale={1.1}
-                minDepthThreshold={0.4}
-                maxDepthThreshold={1.25}
-                roughness={3}
-                mirror={1}
-              />
-            </mesh>
-            <mesh
-              receiveShadow
-              rotation-x={-Math.PI / 2}
-              position={[0, 0.001, 0]}
-            >
-              <planeGeometry args={[10, 10]} />
-              <shadowMaterial transparent color="black" opacity={0.4} />
-            </mesh>
-          </group>
-          <OrbitControls
-            makeDefault
-            autoRotate
-            autoRotateSpeed={0.3}
-            maxPolarAngle={Math.PI / 2.3}
-            minPolarAngle={Math.PI / 2.3}
-            enableZoom={false}
-            enablePan={false}
+        <div className="w-2/5 h-full bg-slate-800 hidden sm:block">
+          <Image
+            className="w-full h-full "
+            src="/images/trying/squigly.png"
+            alt="squares"
+            width={500}
+            height={300}
           />
-          <PerspectiveCamera makeDefault fov={65} position={[0, 0, 4]}>
-            <spotLight
-              position={[10, 10, 5]}
-              angle={0.15}
-              penumbra={1}
-              intensity={10}
-              castShadow
-              shadow-mapSize={[2048, 2048]}
+        </div>
+        <div
+          className="absolute right-40 bottom-44
+        md:bottom-56 md:right-0
+        lg:right-44 lg:top-52
+        xl:right-72 xl:top-52"
+        >
+          {isXl ? (
+            <Image
+              src="/images/myself/svpotrait.png"
+              alt="stardew valley potrait"
+              width={320}
+              height={320}
             />
-          </PerspectiveCamera>
-        </Canvas>
+          ) : isLg ? (
+            <Image
+              src="/images/myself/svpotrait.png"
+              alt="stardew valley potrait"
+              width={250}
+              height={250}
+            />
+          ) : isMd ? (
+            <Image
+              src="/images/myself/svpotrait.png"
+              alt="stardew valley potrait"
+              width={250}
+              height={320}
+            />
+          ) : isXs ? (
+            <Image
+              src="/images/myself/svpotrait.png"
+              alt="stardew valley potrait"
+              width={220}
+              height={220}
+            />
+          ) : (
+            <Image
+              src="/images/myself/svpotrait.png"
+              alt="stardew valley potrait"
+              width={200}
+              height={200}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

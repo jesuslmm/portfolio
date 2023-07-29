@@ -15,12 +15,12 @@ type project = {
   code_link: string;
 };
 
-interface Params extends ParsedUrlQuery {
-  name?: string;
+interface PageProps {
+  params: { name: string };
 }
 
-export default function ProjectDisplay(params: Params) {
-  const project: project = getProject(params);
+export default function ProjectDisplay({ params }: PageProps) {
+  const project: project = getProject(params.name);
 
   const router = useRouter();
 
@@ -111,7 +111,7 @@ export async function generateStaticParams() {
   return params;
 }
 
-function getProject(params: Params) {
-  const projectInfo = FindProjectData(params.params as any);
+function getProject(name: string) {
+  const projectInfo = FindProjectData(name);
   return projectInfo;
 }

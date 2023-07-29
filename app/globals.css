@@ -6,8 +6,3 @@ html {
     scroll-behavior: smooth!important;
 }
 
-@media (max-width: 576px) {
-  .h-screen {
-    flex-direction: column;
-  }
-}
