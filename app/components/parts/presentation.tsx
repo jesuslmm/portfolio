@@ -93,7 +93,7 @@ export default function Presentation() {
             <div className="px-3 animate-trans-top-1">
               <Image
                 alt="PostgreSQL Logo"
-                src="/images/postgreSQL.png"
+                src="/images/PostgreSQL.png"
                 width={150}
                 height={150}
               />
