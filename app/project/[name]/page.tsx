@@ -25,11 +25,11 @@ export default function ProjectDisplay({ params }: PageProps) {
   const router = useRouter();
 
   return (
-    <div className="h-screen lg: grid lg:grid-cols-1">
+    <div className="h-screen grid lg:grid-cols-1">
       <Image
         alt="project"
         src={project.image as string}
-        className="absolute inset-0 object-cover w-full h-full"
+        className="absolute inset-0 object-fill w-full h-full"
         height={300}
         width={300}
       />
@@ -52,13 +52,13 @@ export default function ProjectDisplay({ params }: PageProps) {
         className="xl:absolute text-white z-50 text-center xl:top-48 xl:ml-12 
       xl:text-left mt-14"
       >
-        <h2 className="font-bold xl:text-6xl lg:text-5xl text-4xl mb-11">
+        <h2 className="font-bold xl:text-6xl lg:text-5xl text-4xl">
           {project.name}
         </h2>
-        <h4 className="xl:w-1/3 text-xl font-medium mb-10 text-center xl:text-left px-14 lg:px-0">
+        <h4 className="xl:w-1/3 text-xl font-medium mb-4 text-center xl:text-left px-8 lg:px-0">
           {project.short_description}
         </h4>
-        <p className="xl:w-2/6 xl:p-0 px-14 text-lg font-extralight">
+        <p className="xl:w-2/6 xl:p-0 px-14 text-lg font-extralight ">
           {project.description}
         </p>
       </div>
@@ -73,7 +73,7 @@ export default function ProjectDisplay({ params }: PageProps) {
           md:h-[600px] md:w-[600px]
           lg:h-[400px] lg:w-[700px] md:-mt-32
           sm:h-[300px] sm:w-[570px] sm:-mt-72
-          h-[250px] w-[500px] -mt-48
+          h-[200px] w-[320px]
           "
         >
           <source src={project.video} type="video/mp4" />
@@ -81,13 +81,13 @@ export default function ProjectDisplay({ params }: PageProps) {
         <Link
           className="absolute xl:bottom-0 xl:left-10 xl:top-auto
             lg:bottom-2 md:bottom-12 sm:bottom-8 bottom-2
-            bg-black px-5 py-3 mt-6 rounded-lg hover:scale-110 transition-all z-50"
+            bg-black px-5 py-3 mt-6 rounded-lg hover:scale-110 transition-all z-50 sm:opacity-100 opacity-40 "
           target="_blank"
           href={project.code_link}
         >
           <button>
             <Image
-              className="lg:left-0 xl:ml-0 -ml-5 lg:-ml-0 -mt-2.5 absolute"
+              className="lg:left-0 xl:ml-0 -ml-5 lg:-ml-0 -mt-2.5 absolute "
               src="/images/github.png"
               alt="github"
               width={45}

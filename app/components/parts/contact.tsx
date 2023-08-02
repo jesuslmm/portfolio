@@ -112,7 +112,7 @@ export default function Contact() {
             </div>
             <div
               className="absolute xl:left-auto md:w-[350px] md:h-[300px] lg:top-64 md:right-0 md:top-20 md:ml-0 md:mt-0
-             w-[230px] h-[200px] justify-center mt-16"
+             w-[230px] h-[200px] justify-center "
             >
               <Canvas dpr={[1, 2]} shadows>
                 <fog attach="fog" args={["#101010", 0, 10]} />

@@ -29,10 +29,9 @@ const projectData = [
   },
   {
     name: "Pokemon-quiz",
-    short_description:
-      "Website for a Pokemon quiz, where you can play and make an score",
+    short_description: "Website for a Pokemon quiz",
     description:
-      "Pokemon Quiz is an app that challenges you to name Pokemon. You will be presented with a picture of a Pokemon and four choices, only one of which is the correct name. If you answer correctly, you will score a point. If you answer incorrectly, you will lose a live. You have three lives total. The game ends when you run out of lives. The objective of the game is to score as many points as possible.",
+      "Pokemon Quiz is an app that challenges you to name Pokemon. You will be presented with a picture of a Pokemon and four choices, only one of which is the correct name. If you answer correctly, you will score a point. If you answer incorrectly, you will lose a live. You have three lives total. It ends when you run out of lives.",
     image: "/images/projects/pokemonquiz.jpg",
     video: "/videos/Pokemon-Quiz.mp4",
     code_link: "https://github.com/jesuslmm/Pokemon-quiz",
