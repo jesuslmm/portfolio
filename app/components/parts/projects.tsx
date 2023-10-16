@@ -23,7 +23,7 @@ export default function Projects() {
             className="m-3 group-hover:blur-[3px] transition-all duration-200  ease-out group-hover:scale-110  brightness-75 "
             alt="auction-image"
             src="/images/projects/auct.jpg"
-            width={365}
+            width={350}
             height={400}
           />
           <div
@@ -73,8 +73,8 @@ export default function Projects() {
           <Image
             className="m-3 group-hover:blur-[3px] transition-all duration-200  ease-out group-hover:scale-110  brightness-75"
             alt="auction-image"
-            src="/images/projects/todo.jpeg"
-            width={365}
+            src="/images/projects/to-do-list.png"
+            width={350}
             height={450}
           />
           <div
@@ -125,7 +125,7 @@ export default function Projects() {
             className="m-3 group-hover:blur-[3px] transition-all duration-200  ease-out group-hover:scale-110 brightness-75"
             alt="auction-image"
             src="/images/projects/pokemonquiz.jpg"
-            width={365}
+            width={350}
             height={400}
           />
           <div
@@ -157,10 +157,47 @@ export default function Projects() {
                   width={28}
                   height={28}
                 />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          onClick={() => router.push("/project/Wordle")}
+          className="relative flex justify-center items-center overflow-hidden group hover:cursor-pointer "
+        >
+          <Image
+            className="m-3 group-hover:blur-[3px] transition-all duration-200  ease-out group-hover:scale-110  brightness-75 "
+            alt="auction-image"
+            src="/images/projects/wordle-en.jpeg"
+            width={350}
+            height={200}
+          />
+          <div
+            className="absolute bottom-0 h-2/3 text-center 
+             transition-all duration-200 ease-out"
+          >
+            <div className="p-2 text-white">
+              <p className="text-2xl font-medium">Wordle</p>
+              <p className="font-thin mb-6 mt-2">Website</p>
+              <div className="flex space-x-2.5">
                 <Image
                   className="opacity-80"
-                  src="/images/PostgreSQL.png"
-                  alt="postgreSQL logo"
+                  src="/images/nextLogo.png"
+                  alt="nextLogo"
+                  width={28}
+                  height={28}
+                />
+                <Image
+                  className="opacity-80"
+                  src="/images/tsLogo.png"
+                  alt="typescriptLogo"
+                  width={28}
+                  height={28}
+                />
+                <Image
+                  className="opacity-80"
+                  src="/images/tailwindLogo.png"
+                  alt="tailwindLogo"
                   width={28}
                   height={28}
                 />
