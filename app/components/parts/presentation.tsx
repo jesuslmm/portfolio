@@ -54,7 +54,7 @@ export default function Presentation() {
               <span className="font-extrabold text-white"> SOLID </span>
               fullstack products
             </p>
-            <p className="text-xl hidden lg:block relative top-32 lg:mx-8  text-white font-normal">
+            <p className="text-xl hidden lg:block relative top-32 lg:mx-8 mx-32 text-white font-normal">
               I am a creative and resourceful programmer with a strong
               understanding of software development principles. I am passionate
               about solving problems and creating innovative solutions.
@@ -64,7 +64,7 @@ export default function Presentation() {
               Im a crafter of GOOD and SOLID fullstack products
             </p>
           </div>
-          <div className="grid grid-cols-5  xl:p-16 lg:p-20 py-36 md:p-20 md:mt-0">
+          <div className="grid grid-cols-5 xl:p-16 lg:p-20 py-52 md:p-20 md:mt-0">
             <p className="font-bold text-2xl">Main stack:</p>
             <div className="px-3 animate-trans-top-1">
               <Image
