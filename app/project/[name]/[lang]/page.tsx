@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import FindProjectData from "@/app/components/getProject";
 import Link from "next/link";
@@ -23,8 +21,6 @@ export default function ProjectDisplay({ params }: PageProps) {
 
   const lang = params.lang;
 
-  const router = useRouter();
-
   return (
     <div className="h-screen grid lg:grid-cols-1">
       <Image
@@ -35,8 +31,8 @@ export default function ProjectDisplay({ params }: PageProps) {
         width={300}
       />
       <div className="absolute inset-0 bg-gray-800 opacity-80"></div>
-      <div
-        onClick={() => router.push("/#projects")}
+      <Link
+        href={"/#projects"}
         className="flex absolute left-4 top-3 text-yellow-500 lg:text-2xl font-semibold hover:scale-105 hover:text-yellow-700
       cursor-pointer gap-3 ml-4 mt-3 transition-all z-50"
       >
@@ -48,7 +44,7 @@ export default function ProjectDisplay({ params }: PageProps) {
           width={30}
         />
         <p>{lang == "Ingles" ? "Projects" : "Proyectos"}</p>
-      </div>
+      </Link>
       <div
         className="xl:absolute text-white z-50 text-center xl:top-48 xl:ml-12 
       xl:text-left mt-14"
