@@ -10,8 +10,9 @@ import {
 } from "@react-three/drei";
 import { MeshReflectorMaterial } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import { projectEnglish, projectoEspañol } from "../textLg";
 
-export default function Contact() {
+export default function Contact({ lang }: { lang: string }) {
   const handleSendMail = () => {
     window.location.href =
       "mailto:jesuslmmv2@gmail.com?subject=Work inquiries&body=Feel free to ask whatever you need!";
@@ -61,12 +62,14 @@ export default function Contact() {
       <div className="md:absolute lg:px-96 lg:py-72 md:px-72 md:py-56 md:bg-gray-700 md:rounded-xl text-white">
         <div className="md:absolute md:top-0 md:left-0">
           <h3 className="lg:text-5xl text-3xl font-extrabold p-12 -mt-56 md:-mt-0">
-            Contact
+            {lang == "Español"
+              ? projectoEspañol.contact
+              : projectEnglish.contact}{" "}
           </h3>
           <p className="ml-12 -mt-4 lg:mr-52 md:mr-32 text-lg mr-24 ">
-            Thank you for visiting! For any questions or inquiries, please feel
-            free to send me a message in any social media. I will get back to
-            you as soon as possible
+            {lang == "Español"
+              ? projectoEspañol.farewell
+              : projectEnglish.farewell}{" "}
           </p>
           <div className="ml-12 mt-14 md:grid md:grid-cols-2">
             <div>

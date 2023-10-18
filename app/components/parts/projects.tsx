@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { projectEnglish, projectoEspañol } from "../textLg";
 
-export default function Projects() {
+export default function Projects({ lang }: { lang: string }) {
   const router = useRouter();
   return (
     <div
@@ -9,14 +10,14 @@ export default function Projects() {
       className="lg:h-screen h-full bg-gradient-to-b from-yellow-600 to-yellow-800 "
     >
       <p className="text-white text-center pt-24 font-semibold text-xl">
-        PROJECTS
+        {lang == "Español" ? projectoEspañol.project : projectEnglish.project}{" "}
       </p>
       <p className="text-white text-center font-bold text-6xl mt-8 mb-12">
-        My works
+        {lang == "Español" ? projectoEspañol.works : projectEnglish.works}{" "}
       </p>
       <div className="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1">
         <div
-          onClick={() => router.push("/project/Auctions")}
+          onClick={() => router.push(`/project/Auctions/${lang}`)}
           className="relative flex justify-center items-center overflow-hidden group hover:cursor-pointer "
         >
           <Image
@@ -67,7 +68,7 @@ export default function Projects() {
           </div>
         </div>
         <div
-          onClick={() => router.push("/project/Todo-app")}
+          onClick={() => router.push(`/project/Todo-app/${lang}`)}
           className="relative flex justify-center items-center overflow-hidden group hover:cursor-pointer "
         >
           <Image
@@ -118,7 +119,7 @@ export default function Projects() {
           </div>
         </div>
         <div
-          onClick={() => router.push("/project/Pokemon-quiz")}
+          onClick={() => router.push(`/project/Pokemon-quiz/${lang}`)}
           className="relative flex justify-center items-center overflow-hidden group hover:cursor-pointer "
         >
           <Image
@@ -162,7 +163,7 @@ export default function Projects() {
           </div>
         </div>
         <div
-          onClick={() => router.push("/project/Wordle")}
+          onClick={() => router.push(`/project/Wordle/${lang}`)}
           className="relative flex justify-center items-center overflow-hidden group hover:cursor-pointer "
         >
           <Image

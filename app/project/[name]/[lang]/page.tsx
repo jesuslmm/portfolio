@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { ParsedUrlQuery } from "querystring";
 import FindProjectData from "@/app/components/getProject";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -16,11 +15,13 @@ type project = {
 };
 
 interface PageProps {
-  params: { name: string };
+  params: { name: string; lang: string };
 }
 
 export default function ProjectDisplay({ params }: PageProps) {
-  const project: project = getProject(params.name);
+  const project: project = getProject(params);
+
+  const lang = params.lang;
 
   const router = useRouter();
 
@@ -46,7 +47,7 @@ export default function ProjectDisplay({ params }: PageProps) {
           height={30}
           width={30}
         />
-        <p>Projects</p>
+        <p>{lang == "Ingles" ? "Projects" : "Proyectos"}</p>
       </div>
       <div
         className="xl:absolute text-white z-50 text-center xl:top-48 xl:ml-12 
@@ -93,7 +94,9 @@ export default function ProjectDisplay({ params }: PageProps) {
               width={45}
               height={45}
             />
-            <p className="flex ml-6 font-medium">Code</p>
+            <p className="flex ml-6 font-medium">
+              {lang == "Ingles" ? "Code" : "Codigo"}
+            </p>
           </button>
         </Link>
       </div>
@@ -102,16 +105,19 @@ export default function ProjectDisplay({ params }: PageProps) {
 }
 
 export async function generateStaticParams() {
-  const projects = ["Todo-app", "Auctions", "Pokemon-quiz"];
+  const projects = ["Todo-app", "Auctions", "Pokemon-quiz", "Wordle"];
+  const lang = ["Español", "Ingles"];
   let params = [];
 
-  for (let i = 0; i < projects.length; i++) {
-    params.push({ name: projects[i] });
+  for (let j = 0; j < lang.length; j++) {
+    for (let i = 0; i < projects.length; i++) {
+      params.push({ name: projects[i], lang: lang[j] });
+    }
+    return params;
   }
-  return params;
 }
 
-function getProject(name: string) {
-  const projectInfo = FindProjectData(name);
+function getProject(params: { name: string; lang: string }) {
+  const projectInfo = FindProjectData(params);
   return projectInfo;
 }

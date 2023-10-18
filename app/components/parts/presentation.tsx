@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { projectEnglish, projectoEspañol } from "../textLg";
 
-export default function Presentation() {
+export default function Presentation({ lang }: { lang: string }) {
   const [isXs, setIsXs] = useState(false);
   const [isMd, setIsMd] = useState(false);
   const [isLg, setIsLg] = useState(false);
@@ -44,28 +45,51 @@ export default function Presentation() {
         <div className="lg:w-3/5 h-screen w-full bg-gray-600 ">
           <div className="py-36 text-6xl font-extrabold text-slate-800 text-center">
             <h1>
-              Fullstack <br />
-              Developer{" "}
+              {lang == "Español" ? projectoEspañol.head1 : projectEnglish.head1}{" "}
+              <br />
+              {lang == "Español"
+                ? projectoEspañol.head2
+                : projectEnglish.head2}{" "}
             </h1>
             <p className="text-2xl text-white font-normal hidden md:block relative top-24">
-              Im a crafter of{" "}
-              <span className="font-extrabold text-white">GOOD </span>
-              and
-              <span className="font-extrabold text-white"> SOLID </span>
-              fullstack products
+              {lang == "Español"
+                ? projectoEspañol.title1
+                : projectEnglish.title1}{" "}
+              <span className="font-extrabold text-white">
+                {lang == "Español"
+                  ? projectoEspañol.titlespan1
+                  : projectEnglish.titlespan1}{" "}
+              </span>
+              {lang == "Español"
+                ? projectoEspañol.title2
+                : projectEnglish.title2}{" "}
+              <span className="font-extrabold text-white">
+                {" "}
+                {projectEnglish.titlespan2}{" "}
+              </span>
+              {lang == "Español"
+                ? projectoEspañol.title3
+                : projectEnglish.title3}{" "}
             </p>
             <p className="text-xl hidden lg:block relative top-32 lg:mx-8 mx-32 text-white font-normal">
-              I am a creative and resourceful programmer with a strong
-              understanding of software development principles. I am passionate
-              about solving problems and creating innovative solutions.
+              {lang == "Español"
+                ? projectoEspañol.description
+                : projectEnglish.description}{" "}
             </p>
 
             <p className="text-lg md:hidden text-white relative top-10">
-              Im a crafter of GOOD and SOLID fullstack products
+              {lang == "Español"
+                ? projectoEspañol.altertitle
+                : projectEnglish.altertitle}{" "}
             </p>
           </div>
           <div className="grid grid-cols-5 xl:p-16 lg:p-20 py-52 md:p-20 md:mt-0">
-            <p className="font-bold text-2xl">Main stack:</p>
+            <p className="font-bold text-2xl">
+              {" "}
+              {lang == "Español"
+                ? projectoEspañol.stacktitle
+                : projectEnglish.stacktitle}{" "}
+            </p>
             <div className="px-3 animate-trans-top-1">
               <Image
                 alt="Next.js Logo"
@@ -107,7 +131,9 @@ export default function Presentation() {
         >
           <p className="rotate-6 font-bold text-white text-right py-6 text-2xl">
             <span className="hover:animate-bounce">👋</span>
-            Hi! Im Jesús
+            {lang == "Español"
+              ? projectoEspañol.salute
+              : projectEnglish.salute}{" "}
           </p>
         </div>
         <div className="w-2/5 h-full bg-slate-800 hidden sm:block">
