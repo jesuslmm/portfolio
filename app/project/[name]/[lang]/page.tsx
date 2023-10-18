@@ -109,8 +109,8 @@ export async function generateStaticParams() {
     for (let i = 0; i < projects.length; i++) {
       params.push({ name: projects[i], lang: lang[j] });
     }
-    return params;
   }
+  return params;
 }
 
 function getProject(params: { name: string; lang: string }) {
